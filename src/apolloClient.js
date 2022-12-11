@@ -30,9 +30,12 @@ const authLink = setContext((_, { header }) => {
     },
   };
 });
-
+const port =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8000"
+    : process.env.SERVER_PORT;
 const httpLink = createHttpLink({
-  uri: "http://localhost:8080/graphql",
+  uri: `${port}/graphql`,
   // credentials: "include",
 });
 
