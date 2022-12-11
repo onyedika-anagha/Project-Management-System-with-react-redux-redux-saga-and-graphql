@@ -17,17 +17,14 @@ function App() {
   return (
     <>
       <InitialState />
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        <Routes>
-          <Route path="/" element={<Navigate replace to={"/login"} />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
-        </Routes>
-      )}
+      {isLoading && <Preloader />}
 
+      <Routes>
+        <Route path="/" element={<Navigate replace to={"/login"} />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+      </Routes>
       <ToastContainer />
     </>
   );

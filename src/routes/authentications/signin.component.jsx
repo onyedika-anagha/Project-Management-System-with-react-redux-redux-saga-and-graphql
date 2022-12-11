@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SignInForm from "../../components/sign-in/sign-in-form.component";
 import { selectIsLoggedIn, selectUser } from "../../store/user/user.selector";
+import login_svg from "../../assets/images/login-img.svg";
 
 function SignIn() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -46,7 +47,7 @@ function SignIn() {
                   </div>
                   {/* Image block */}
                   <div className="">
-                    <img src="../assets/images/login-img.svg" alt="login-img" />
+                    <img src={login_svg} alt="login-img" />
                   </div>
                 </div>
               </div>

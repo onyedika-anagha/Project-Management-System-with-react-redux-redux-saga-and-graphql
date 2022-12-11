@@ -149,7 +149,7 @@ const EditProject = () => {
                 >
                   Cancel
                 </button>
-                {loading != null ? (
+                {loading ? (
                   <button type="button" className="btn btn-default">
                     <div
                       className="spinner-border text-light"
@@ -161,7 +161,7 @@ const EditProject = () => {
                   </button>
                 ) : (
                   <button type="submit" className="btn btn-primary">
-                    Create
+                    Update
                   </button>
                 )}
               </div>
