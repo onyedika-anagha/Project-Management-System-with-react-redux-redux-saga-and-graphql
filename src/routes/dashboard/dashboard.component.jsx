@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import DashboardHome from "../../components/dashboard/dashboard-home.component";
 import PageNotFound from "../../components/errors/404.component";
 import Header from "../../components/header/header.component";
@@ -16,11 +16,10 @@ const Dashboard = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const currentUser = useSelector(selectUser);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   useEffect(() => {
-    if (!isLoggedIn && currentUser == null) {
-      navigate("/login");
-    }
-  }, [isLoggedIn, currentUser, navigate]);
+    if (!isLoggedIn && currentUser == null) navigate(`/login?from=` + pathname);
+  }, [isLoggedIn, currentUser, navigate, pathname]);
 
   return (
     <div id="mytask-layout" className="theme-indigo">

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import SignInForm from "../../components/sign-in/sign-in-form.component";
 import { selectIsLoggedIn, selectUser } from "../../store/user/user.selector";
 import login_svg from "../../assets/images/login-img.svg";
@@ -8,12 +8,16 @@ import login_svg from "../../assets/images/login-img.svg";
 function SignIn() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const currentUser = useSelector(selectUser);
-  const navigate = useNavigate();
+  const navigate = useNavigate(),
+    [searchParams] = useSearchParams(),
+    from = searchParams.get("from"),
+    dashboardLink = "/dashboard";
   useEffect(() => {
     if (isLoggedIn && currentUser != null) {
-      navigate("/dashboard");
+      const to = from != null ? from : dashboardLink;
+      navigate(`${to}?from=login`);
     }
-  }, [isLoggedIn, currentUser, navigate]);
+  }, [isLoggedIn, navigate, dashboardLink, from, currentUser]);
 
   return (
     <div id="mytask-layout" className="theme-indigo">
