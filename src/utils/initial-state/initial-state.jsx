@@ -16,8 +16,10 @@ import { useQuery } from "@apollo/client";
 
 export const alertMessage = (type, msg) => {
   const theme =
-    localStorage.theme !== null
-      ? localStorage.theme
+    localStorage.theme !== null && localStorage.theme === "dark"
+      ? "dark"
+      : localStorage.theme !== null && localStorage.theme === "light"
+      ? "light"
       : window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
