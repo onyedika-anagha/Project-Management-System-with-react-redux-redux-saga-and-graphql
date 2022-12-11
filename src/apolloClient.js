@@ -34,6 +34,7 @@ const port =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:8000"
     : process.env.SERVER_PORT;
+console.log("port: ", port);
 const httpLink = createHttpLink({
   uri: `${port}/graphql`,
   // credentials: "include",
