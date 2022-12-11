@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.div-block-440 {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  z-index: -1;
+  display: block;
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+  background-image: url("https://uploads-ssl.webflow.com/609124aa26f8d4863c88a6d9/6140b34198c4a2bf8e7e6224_1920%3A1080.png");
+  background-position: 50% 50%;
+  background-size: cover;
+  background-attachment: scroll;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+@media screen and (max-width: 991px) {
+  .button-8 {
+    line-height: 20px;
+  }
+  .div-block-440 {
+    display: block;
+  }
+}
+.w-button {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #3898ec;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.button-8 {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background-color: #000;
+  font-family: Graphik, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+.paragraph-3._404_paragraph {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding-top: 0px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 767px) {
+  .paragraph-3 {
+    line-height: 25px;
+  }
+}
+.paragraph-3 {
+  max-width: none;
+  padding-top: 12px;
+  font-family: Graphik, sans-serif;
+  color: #666;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: left;
+}
