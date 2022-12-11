@@ -245,4 +245,4 @@ export const categories = [
     title: "Headphones",
   },
 ];
-export const SERVER_URL = "https://project-assistant-server.onrender.com/";
+export const SERVER_URL = "https://project-assistant-server.onrender.com";
