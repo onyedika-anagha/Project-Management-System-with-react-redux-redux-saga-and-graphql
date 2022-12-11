@@ -18,7 +18,7 @@ export const alertMessage = (type, msg) => {
   const theme =
     localStorage.theme !== null
       ? localStorage.theme
-      : window.matchMedia("(prefers-color-scheme: dark)")
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
 
