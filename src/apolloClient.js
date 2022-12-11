@@ -2,6 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
 import { AUTH_TOKEN } from "./utils/helper/constants";
+import { SERVER_URL } from "./utils/initial-state/states";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -31,9 +32,7 @@ const authLink = setContext((_, { header }) => {
   };
 });
 const port =
-  process.env.NODE_ENV !== "production"
-    ? "http://localhost:8000"
-    : process.env.REACT_SERVER_URL;
+  process.env.NODE_ENV !== "production" ? "http://localhost:8000" : SERVER_URL;
 console.log("port: ", port);
 const httpLink = createHttpLink({
   uri: `${port}/graphql`,
