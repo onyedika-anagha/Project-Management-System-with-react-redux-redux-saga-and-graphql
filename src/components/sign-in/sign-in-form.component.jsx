@@ -1,8 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+
 import FormInput from "../form-input/form-input.component";
-import { LOGIN_USER } from "../../mutations/user.mutation";
+import { GOOGLE_LOGIN, LOGIN_USER } from "../../mutations/user.mutation";
 import { alertMessage } from "../../utils/initial-state/initial-state";
 import googleSvg from "../../assets/img/google.svg";
 import { useDispatch } from "react-redux";
@@ -28,6 +30,32 @@ const SignInForm = () => {
     },
     [loginUser] = useMutation(LOGIN_USER, {
       variables: formData,
+    }),
+    [googleLogin] = useMutation(GOOGLE_LOGIN),
+    googleSignIn = useGoogleLogin({
+      onSuccess: async (res) => {
+        console.log(res);
+        const getUser = await fetch(
+          `https://www.googleapis.com/oauth2/v3/userinfo`,
+          {
+            headers: {
+              Authorization: `Bearer ${res.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        );
+        const response = await getUser.json();
+        console.log(response);
+
+        const { data } = await googleLogin({
+          variables: { email: response.email },
+        });
+
+        dispatch(signInSuccess(data.googleLogin));
+        sessionStorage.setItem(AUTH_TOKEN, data.googleLogin.token);
+        alertMessage("success", "Login Successful");
+        setLoading(false);
+      },
     }),
     handleSubmit = async (e) => {
       e.preventDefault();
@@ -57,7 +85,11 @@ const SignInForm = () => {
         <span>Free access to our dashboard.</span>
       </div>
       <div className="col-12 text-center mb-4">
-        <a className="btn btn-lg btn-outline-secondary btn-block" href="#!">
+        <a
+          className="btn btn-lg btn-outline-secondary btn-block"
+          href="#!"
+          onClick={googleSignIn}
+        >
           <span className="d-flex justify-content-center align-items-center">
             <img
               className="avatar xs me-2"
@@ -86,14 +118,15 @@ const SignInForm = () => {
           label={
             <span className="d-flex justify-content-between align-items-center">
               Password
-              <a className="text-secondary" href="auth-password-reset.html">
+              {/* <a className="text-secondary" href="auth-password-reset.html">
                 Forgot Password?
-              </a>
+              </a> */}
             </span>
           }
           type="password"
           className="form-control form-control-lg"
           placeholder="***************"
+          autocomplete={false}
           name="password"
           value={password}
           onChange={handleChange}

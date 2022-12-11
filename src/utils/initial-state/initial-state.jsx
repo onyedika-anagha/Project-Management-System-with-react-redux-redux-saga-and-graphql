@@ -80,10 +80,10 @@ const InitialState = () => {
     } else {
       document.querySelector("html").setAttribute("data-theme", "light");
     }
-  }, [theme]);
+  }, [theme, dispatch]);
   useEffect(() => {
     dispatch(checkUserSession());
-  }, []);
+  }, [dispatch]);
 
   if (userId != null) return <FetchCurrentUser userId={userId} />;
 };

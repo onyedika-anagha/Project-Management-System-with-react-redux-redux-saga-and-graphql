@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../../store/user/user.selector";
+import { makeid } from "../../utils/helper/helper";
+import profile_av from "../../assets/images/profile_av.png";
 
 const Profile = () => {
   const user = useSelector(selectUser);
@@ -25,15 +27,15 @@ const Profile = () => {
                   <div className="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
                     <a href="#!">
                       <img
-                        src="assets/images/lg/avatar3.jpg"
-                        alt=""
+                        src={profile_av}
+                        alt="profile_image"
                         className="avatar xl rounded-circle img-thumbnail shadow-sm"
                       />
                     </a>
                     <div className="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
                       <h6 className="mb-0 fw-bold d-block fs-6">ADMIN</h6>
                       <span className="text-muted small">
-                        USER ID : PXL-0001
+                        USER ID : PXL-{makeid().toLocaleUpperCase()}
                       </span>
                     </div>
                   </div>
@@ -44,37 +46,35 @@ const Profile = () => {
                     <span className="py-1 fw-bold small-11 mb-0 mt-1 text-muted">
                       {user.name}
                     </span>
-                    <p className="mt-2 small">
+                    {/* <p className="mt-2 small">
                       The purpose of lorem ipsum is to create a natural looking
                       block of text (sentence, paragraph, page, etc.) that
                       doesn't distract from the layout. A practice not without
                       controversy
-                    </p>
+                    </p> */}
                     <div className="row g-2 pt-2">
-                      <div className="col-xl-5">
+                      {/* <div className="col-xl-5">
                         <div className="d-flex align-items-center">
                           <i className="icofont-ui-touch-phone" />
                           <span className="ms-2 small">202-555-0174 </span>
                         </div>
-                      </div>
+                      </div> */}
                       <div className="col-xl-5">
                         <div className="d-flex align-items-center">
                           <i className="icofont-email" />
                           <span className="ms-2 small">{user.email}</span>
                         </div>
                       </div>
-                      <div className="col-xl-5">
+                      {/* <div className="col-xl-5">
                         <div className="d-flex align-items-center">
                           <i className="icofont-birthday-cake" />
                           <span className="ms-2 small">19/03/1980</span>
                         </div>
-                      </div>
+                      </div> */}
                       <div className="col-xl-5">
                         <div className="d-flex align-items-center">
                           <i className="icofont-address-book" />
-                          <span className="ms-2 small">
-                            2734 West Fork Street,EASTON 02334.
-                          </span>
+                          <span className="ms-2 small">Project Assistant</span>
                         </div>
                       </div>
                     </div>
